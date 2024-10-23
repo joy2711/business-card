@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="print.css">
+   <title>Business Card</title>
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f0f0f0;
+        }
+
+        .business-card {
+            width: 3.5in; /* Width of the business card */
+            height: 2in; /* Height of the business card */
+            border: 2px solid #00274d; /* Dark blue border */
+            border-radius: 10px; /* Rounded corners */
+            overflow: hidden;
+            display: block;
+            flex-direction: column;
+            background-color: #00274d; /* Dark blue background */
+            color: white;
+            font-family: Arial, sans-serif;
+            position: relative;
+            perspective: 1000px; /* Enable 3D effect */
+        }
+
+        .front, .back {
+            flex: 1;
+            padding: 10px;
+            text-align: center;
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            backface-visibility: hidden; /* Hides the back when front is visible */
+            transition: transform 0.6s;
+            z-index: 1;
+        }
+
+        .back {
+            background-color: #003366; /* Different color for the back */
+            transform: rotateY(180deg); /* Flips the back side */
+            z-index: 1;
+            text-align: center;
+        }
+
+        .business-card.flipped .front {
+            transform: rotateY(180deg); /* Flips the front side when flipped */
+        }
+
+        .business-card.flipped .back {
+            transform: rotateY(0deg); /* Shows the back side when flipped */
+        }
+
+        .icon {
+            width: 40px; /* Adjust the size of the icon */
+        }
+        .h1 {
+            font-size: 23px;
+        }
+
+        .qualification {
+            font-style: italic;
+            margin: 5px 0;
+            font-size: 15px;
+        }
+
+
+        .contact-info, .office-location {
+            margin: 5px 0;
+        }
+        .qr-code{
+            text-align: center;
+            margin-bottom: 10px;
+            padding-bottom: 0%;
+        }
+        .qr-code img {
+             max-width: 80px; /* Maximum width of the QR code */
+             max-height: 40px; /* Maximum height of the QR code */
+             width: auto; /* Maintain aspect ratio */
+             height: auto; /* Maintain aspect ratio */
+        }
+
+        button {
+            margin-bottom: 20px; /* Space between button and card */
+            padding: 10px 15px;
+            font-size: 16px;
+            background-color: #00274d; /* Match card color */
+            color: white;
+            border: none;
+            border-radius: 5px; /* Rounded button */
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #003366; /* Darker shade on hover */
+        }
+        </style>
+    
+</head>
+<body>
+    <button onclick="toggleCard()">Flip Card</button> <!-- Button to flip the card -->
+    <div class="business-card">
+        <div class="front">
+            <img src="images/stethoscope-icon.png" alt="Stethoscope Icon" class="icon">
+            <h1>Dr. Edwin Abuga</h1>
+            <p class="qualification">MBChB | MMed ORTHOPEDIC SURGERY</p>
+        </div>
+        <div class="back">
+            <div class="qr-code">
+                <img src="images/frame.png" alt="QR Code">
+                <p>Connect with Me</p>
+            </div>
+            <p class="contact-info">Phone Number: +254 720 401 739</p>
+            <p class="office-location">The Nairobi Hospital<br>Argwings Kodhek Rd, Upperhill.<br>Warwick Center, UN Avenue, Gigiri</p>
+        </div>
+    </div>
+
+    <script>
+        function toggleCard() {
+            const card = document.querySelector('.business-card');
+            card.classList.toggle('flipped');
+        }
+    </script>
+</body>
+</html>
+

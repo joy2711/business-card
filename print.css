@@ -1,0 +1,10 @@
+@media print {
+    body {
+        width: 3.5in; /* Width of the business card */
+        height: 2in; /* Height of the business card */
+        overflow: hidden; /* Prevent content from overflowing */
+    }
+}
+.back{
+    display: none;
+}
